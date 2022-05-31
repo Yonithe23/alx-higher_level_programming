@@ -1,15 +1,11 @@
 #!/usr/bin/python3
-FIZZ = "Fizz"
-BUZZ = "Buzz"
-
-
 def fizzbuzz():
-    for number in range(1, 101):
-        if (number % 3 and number % 5):
-            print("%s%s" % (FIZZ, BUZZ), end=' ')
-        elif (number % 3):
-            print("%s" % (FIZZ), end=' ')
-        elif (number % 5):
-            print("%s" % (BUZZ), end=' ')
+    for count in range(1, 101):
+        if count % 3 == 0 and count % 5 == 0:
+            print("FizzBuzz ", end="")
+        elif count % 3 == 0:
+            print("Fizz ", end="")
+        elif count % 5 == 0:
+            print("Buzz ", end="")
         else:
-            print("%d" % (number), end=' ')
+            print('%d ' % (count), end="")
