@@ -1,26 +1,21 @@
 #!/usr/bin/python3
-def main(argv):
-    argc = len(argv)
-    ops = {
-        '+': calculator_1.add,
-        '-': calculator_1.sub,
-        '*': calculator_1.mul,
-        '/': calculator_1.div,
-    }
-    if argc != 4:
-        print('Usage: {:s} <a> <operator> <b>'.format(argv[0]))
+if __name__ == "__main__":
+    import sys
+    from calculator_1 import add, sub, mul, div
+    args = sys.argv
+    if len(args) != 4:
+        print("Usage: ./100-my_calculator.py <a> <operator> <b>")
+        sys.exit(1)
+    if args[2] != '+' and args[2] != '-' and args[2] != '*' and args[2] != '/':
+        print("Unknown operator. Available operators: +, -, * and /")
         exit(1)
-    a = int(argv[1])
-    b = int(argv[3])
-    op = argv[2]
-    if op not in '+-*/':
-        print('Unknown operator. Available operators: +, -, * and /')
-        exit(1)
-    res = ops[op](a, b)
-    print('{:d} {:s} {:d} = {:d}'.format(a, op, b, res))
-
-
-if __name__ == '__main__':
-    from sys import argv, exit
-    import calculator_1
-    main(argv)
+    a = int(args[1])
+    b = int(args[3])
+    if args[2] == '+':
+        print("{} {} {} = {}".format(a, args[2], b, add(a, b)))
+    elif args[2] == '-':
+        print("{} {} {} = {}".format(a, args[2], b, sub(a, b)))
+    elif args[2] == '*':
+        print("{} {} {} = {}".format(a, args[2], b, mul(a, b)))
+    elif args[2] == '/':
+        print("{} {} {} = {}".format(a, args[2], b, div(a, b)))
